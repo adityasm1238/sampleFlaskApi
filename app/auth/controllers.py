@@ -54,7 +54,7 @@ def signin():
     user = Users.objects(username=username).first()
     if user == None:
         return AppError.error("Username does not exists.")
-    if not bcrypt.check_password_hash(user.password,password):
+    if not bcrypt.check_password_hash(user.password,password):  #Check if the hash matches
         return AppError.error("Invalid Password.")
     res = {}
     res['username'] = username
